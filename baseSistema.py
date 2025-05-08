@@ -1,5 +1,9 @@
+import json
+import os
 from datetime import datetime
 from baseCadastro import cadastroResponsavel, cadastroFilho, loginAluno, loginResponsavel
+
+
 
 horaAtual = datetime.now().hour
 
