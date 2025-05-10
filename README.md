@@ -1,6 +1,6 @@
 # Projeto Escolinha:
 
-#### Nesse projeto vou adicionar um sistemas de alunos, pais e admins, os alunos serão cadastrados depois que os pais forem cadastados para que nos podemos ter um controle melhor do aluno, cada aluno vai ter um RA(id) unico que quando criado esse aluno vai poder fazer seu login com uma senha criada pelo os responsaveis, ele vai ter acesso as faltas, tarefas, horario escolar e etc..
+#### Nesse projeto vou adicionar um sistemas de alunos, pais, Professores e admins, os alunos serão cadastrados depois que os pais forem cadastados para que nos podemos ter um controle melhor do aluno, cada aluno vai ter um RA(id) unico que quando criado esse aluno vai poder fazer seu login com uma senha criada pelo os responsaveis, ele vai ter acesso as faltas, tarefas, horario escolar e etc..
 
 ### Meta:
 
