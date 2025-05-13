@@ -5,7 +5,7 @@ session = chamaSession()
 fun = funcionario
 pais = responsavei
 Aluno = aluno
-admin = admin
+Admin = admin
 
 # adicionar Cadastro Funcionario
 def cadastroFuncionario():
@@ -41,6 +41,7 @@ def cadastroFuncionario():
     Horario = int(input("Qual o seu Horario | Integral(1) | meioPeriodo(2) | : "))
     if Horario == 1:
         Horario = "Integral"
+        Turno = "Integral"
     elif Horario == 2:
         Horario = "meioPeriodo"
         Turno = int(input("Qual seu Turno? | Manhã(1) | Tarde(2) | noite(3) |  : "))
@@ -59,17 +60,14 @@ def cadastroFuncionario():
     else:
         print("Não n Temos essa opção")
 
-    Salario = None
-    Falta = None
-
     #Criando e postando o Cadastro no Banco de Dados
     funcionario = fun(nome=Nome, idade=Idade, gmail=Gmail, funcao=Funcao, horario=Horario, turno=Turno)
     session.add(funcionario)
     session.commit()
     print()
     print("---------------CADASTRO FEITO---------------")    
-    
     return Funcao
+    
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     # Adicionar cadastro dos Responsavei para depois Fazer o cadastro dos Alunos
 def cadastroResteAluno():
@@ -157,14 +155,22 @@ def cadastroResteAluno():
             print("Não temos essa opção somente as | 1 = Sim | 2 = Não | ")
         
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def cadastroAdmin():
+    Funcao = cadastroFuncionario()
+    # Puxar o cadastro para colocar no painel Admin
+    funAdmin = session.query(fun).filter_by(id=fun.id).first()
+        
+        # Puxar e mandar para o painel Admin
+    if Funcao in ("Diretor", "Cordenador", "Recepção"):
+        SenhaAdmin = input("Crie uma Senha para seu painel admin : ")
+        admPainel = Admin(nome=funAdmin.nome, idade=funAdmin.idade, funcao=funAdmin.funcao,horario=funAdmin.horario,gmail=funAdmin.horario,senha=SenhaAdmin)
+        session.add(admPainel)
+        session.commit()
+        print()
+        print("---------------PERMITIDO O ACESSO PAINEL ADMIN---------------")
 
-print()
-print("---------------CADASTRO Admin---------------")
-print()
-
-    # Tenho q Corrigir o admin - o Cadastro admin já vai ser criado Dependo do cargo q vc tiver No cadastroFuncionario
 
 # # Deletar Cadastro do Banco de Dados
-# delPessoa = session.query(fun).filter_by(id="").first()
+# delPessoa = session.query(fun).filter_by(id="2").first()
 # session.delete(delPessoa)
 # session.commit()

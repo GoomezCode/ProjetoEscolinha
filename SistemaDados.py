@@ -82,11 +82,11 @@ class admin(Base):
     __tablename__= "admin"
 
     id = Column("Id", Integer, primary_key=True, autoincrement=True)
-    nome = Column("Nome", String)
-    idade = Column("Idade", Integer)
-    funcao = Column("Função", String)
-    horario = Column("Horario", String)
-    gmail = Column("Gmail", String)
+    nome = Column("Nome", String, ForeignKey(funcionario.nome))
+    idade = Column("Idade", Integer, ForeignKey(funcionario.idade))
+    funcao = Column("Função", String, ForeignKey(funcionario.funcao))
+    horario = Column("Horario", String, ForeignKey(funcionario.horario))
+    gmail = Column("Gmail", String, ForeignKey(funcionario.gmail))
     senha = Column("Senha", String)
 
     def __init__(self, nome, idade, funcao, horario, gmail, senha):
